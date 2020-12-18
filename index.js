@@ -29,11 +29,11 @@ myFunction();
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
 function summation(number){
-    let count = 0;
-    return function(){
-      count += number;
-      return count;
+  let counter = 0;
+  for(let i = 1; i < number + 1; i++){
+    counter += i;
     }
+    return counter;
   }
 
 
@@ -48,12 +48,16 @@ function summation(number){
   */
 
   function animalNames(data){
-    let displayNames = data.forEach(function(nam){
-      return `name: ${nam.animal_name}, scientific: ${nam.scientific_name}`;
-    })
-    return displayNames;
+    const names = [];
+    data.forEach(nam => names.push(`name: ${nam.animal_name}, scientific: ${nam.scientific_name}`))
+    return names;
   }
   
+  // let displayNames = data.forEach(function(item){
+  //   item.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`);
+  //   // return `name: ${item.animal_name}, scientific: ${item.scientific_name}`;
+  // })
+  // return displayNames;
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoo needs a list of all their animal's names converted to lower case. 
@@ -61,11 +65,9 @@ function summation(number){
   For example: ['jackal, asiatic', .....]
   */
 
-  function lowerCaseNames(array){
-    let lower = array.map(low => {
-     return low.toLowerCase(low.animal_name);
-    })
-    return lower;
+  function lowerCaseNames(data){
+    const lowerCase = data.map(low => low.animal_name.toLowerCase());
+    return lowerCase;
   }
   
   
@@ -75,9 +77,7 @@ function summation(number){
   */
 
   function lowPopulationAnimals(data){
-    let population = data.filter(function(pop){
-      return pop.population < 5;
-    })
+    let population = data.filter(pop => pop.population < 5);
     return population;
   }
   
@@ -105,21 +105,21 @@ function summation(number){
   */
 
   function consume(a, b,cb){
-    return cb = a + b;
+    return cb(a, b);
   }
  
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
   
-function add(callback,number){
-    return callback + number;
+function add(number1, number2){
+    return number1 + number2;
   }
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
   
-function multiply(callback2, number2){
-   return callback2 * number2;
+function multiply(number3, number4){
+   return number3 * number4;
   }
 
  // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
@@ -178,7 +178,11 @@ CuboidMaker.prototype.surfaceArea = function(){
   Create an object called cuboid that uses the new keyword to use our CuboidMaker constructor
   Add properties and values of length: 4, width: 5, and height: 5 to cuboid. */
 
-
+const cuboid = new CuboidMaker({
+   length: 4,
+   width: 5,
+   height: 5
+});
 
 
 
@@ -203,7 +207,11 @@ class CuboidMakerTwo{
     return (2 * (this.length * this.width + this.length * this.height + this.width * this.height));
   }
 }
-
+const cuboidTwo = new CuboidMakerTwo({
+  length: 4,
+  width: 5,
+  height:5
+})
 
 //🦄🦄🦄 Test your volume and surfaceArea methods by uncommenting the logs below: 🦄🦄🦄
 // console.log(cuboidTwo.volume()); // 100
@@ -216,7 +224,17 @@ class CuboidMakerTwo{
 // 🦄 💪 Stretch Task: Extend the base class CuboidMaker with a sub class called CubeMaker.  Find out the formulas for volume and surface area for cubes and create those methods using the dimension properties from CuboidMaker.  Test your work by logging out your volume and surface area. 🦄 💪
   
 
-
+class CubeMaker extends CuboidMaker{
+  constructor(cube){
+    super(cube);
+  }
+  cubeVolume(){
+    return this.length * this.width * this.height;
+  }
+  cubeSurfaceArea(){
+    return (6 * (this.length * this.width));
+  }
+}
 
 
 
