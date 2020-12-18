@@ -18,7 +18,7 @@ myFunction();
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
 
-//The nested function can access the variable internal because it is a child of the myFunction, and children have access to everything that their parent functions have.
+//The nested function can access the variable internal, because it is a child of the myFunction, and children have access to everything that their parent functions have.
 
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
